@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105192852) do
+ActiveRecord::Schema.define(version: 20151105194721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "blogs", force: :cascade do |t|
-    t.string "content"
-    t.text   "img_url"
-    t.string "category"
+    t.string  "content"
+    t.text    "img_url"
+    t.string  "category"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
