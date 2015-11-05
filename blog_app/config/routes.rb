@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+  resources :blogs
+  root 'blogs#index'
 
+#====================================user routes=======================================
 #                   Prefix Verb   URI Pattern                    Controller#Action
 #         new_user_session GET    /users/sign_in(.:format)       users/sessions#new
 #             user_session POST   /users/sign_in(.:format)       users/sessions#create
@@ -17,5 +20,16 @@ Rails.application.routes.draw do
 #                          PATCH  /users(.:format)               users/registrations#update
 #                          PUT    /users(.:format)               users/registrations#update
 #                          DELETE /users(.:format)               users/registrations#destroy
+
+#====================================blog routes=========================================
+
+#     blogs GET    /blogs(.:format)               blogs#index
+#           POST   /blogs(.:format)               blogs#create
+#  new_blog GET    /blogs/new(.:format)           blogs#new
+# edit_blog GET    /blogs/:id/edit(.:format)      blogs#edit
+#      blog GET    /blogs/:id(.:format)           blogs#show
+#           PATCH  /blogs/:id(.:format)           blogs#update
+#           PUT    /blogs/:id(.:format)           blogs#update
+#           DELETE /blogs/:id(.:format)           blogs#destroy
 
 end
