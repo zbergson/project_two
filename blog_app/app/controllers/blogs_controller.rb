@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
 	skip_before_action :verify_authenticity_token
+	before_action :set_blogs, only: [:show, :edit, :update, :destroy]
 	
 	def index
 
@@ -18,9 +19,18 @@ class BlogsController < ApplicationController
 		redirect_to '/blogs'
 	end
 
+	def show
+
+
+	end
+
+	def set_blogs
+		@blog = Blog.find(params[:id])
+	end
+
 
 	def blog_params
-		params.permit(:content, :category, :user_id, :img_url, :headline)
+		params.permit(:content, :category, :user_id, :img_url, :headline, :author)
 	end
 
 

@@ -1,20 +1,11 @@
-
 <% if user_signed_in? %>
-<p><%=current_user.username %> is logged in </p>
-<% end %>
-
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-  </li>
+<a href="/blogs/new">Write A story</a>
 <% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
+<p>Log in to start writing!</p>
 <% end %>
-
 <% @blogs.each do |blog| %>
-	<h1><%= blog.headline %></h1>
+	<h1><a href="/blogs/<%= blog.id%>"><%= blog.headline %></a></h1>
+	<h3><%= blog.author %></h3>
 	<img src="<%= blog.img_url %>">
 	<p><%= blog.content %></p>
 <% end %>

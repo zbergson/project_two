@@ -7,12 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<a href="/blogs">Home</a>
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
 <% if alert %>
   <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<% if user_signed_in? %>
+<p><%=current_user.username %> is logged in </p>
+<% end %>
+
+
+<% if user_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_user_session_path)  %>  
+  </li>
 <% end %>
 
 <%= yield %>
