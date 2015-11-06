@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   resources :blogs
   root 'blogs#index'
+  
 
 #====================================user routes=======================================
 #                   Prefix Verb   URI Pattern                    Controller#Action

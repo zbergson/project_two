@@ -3,18 +3,24 @@ class BlogsController < ApplicationController
 	
 	def index
 
+		@blogs = Blog.all
 			
 	end
 
 	def new
 
 
+	end
 
+	def create 
+
+		@blog = Blog.create(blog_params)
+		redirect_to '/blogs'
 	end
 
 
-	def user_params
-		params.require(:blog).permit(:user, :username)
+	def blog_params
+		params.permit(:content, :category, :user_id, :img_url, :headline)
 	end
 
 

@@ -1,0 +1,12 @@
+  <form action="/blogs" method="post">
+    <input type="hidden" name="current_user_id" value="<%= current_user.id %>">
+    <label>Headline</label>
+    <input type="text" name="headline"></br>
+    <label>Content</label>
+    <input type="text" name="content"></br>
+    <label>Image</label>
+    <input type="text" name="img_url"></br>
+    <label>Category</label>
+    <input type="text" name="category"></br>
+    <input type="submit" value="Create new blog post">
+  </form>
