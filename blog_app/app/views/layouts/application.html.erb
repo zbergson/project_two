@@ -17,6 +17,7 @@
 
 <% if user_signed_in? %>
 <p><%=current_user.username %> is logged in </p>
+<p><a href="blogs/author/<%=current_user.id %>">Profile</a></p>
 <% end %>
 
 

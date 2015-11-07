@@ -30,9 +30,11 @@ class BlogsController < ApplicationController
 		@user_id = User.where(id: params[:user_id])
 		
 		
-		@blog = Blog.where user_id: params[:user_id]
+		@blog = Blog.order("blogs.id desc").where user_id: params[:user_id]
 
+	end
 
+	def edit
 
 	end
 
@@ -40,7 +42,7 @@ class BlogsController < ApplicationController
 
 
 	def blog_params
-		params.require(:blog).permit(:content, :category, :user_id, :img_url, :headline, :author)
+		params.permit(:content, :category, :user_id, :img_url, :headline, :author)
 	end
 
 
