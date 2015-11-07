@@ -1,0 +1,13 @@
+<% @user_id.each do |user| %>
+<img src="<%=user.img_url %>">
+<h3><%= user.username %></h3>
+<p><%= user.email %></p>
+<% end %>
+
+
+<% @blog.each do |blog| %>
+	<h1><a href="/blogs/<%= blog.id%>"><%= blog.headline %></a></h1>
+	<h3><%= blog.author %></h3>
+	<img src="<%= blog.img_url %>">
+	<p><%= blog.content %></p>
+<% end %>

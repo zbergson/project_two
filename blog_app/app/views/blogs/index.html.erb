@@ -1,11 +1,11 @@
 <% if user_signed_in? %>
-<a href="/blogs/new">Write A story</a>
+<a href="/blogs/new">Write a story</a>
 <% else %>
 <p>Log in to start writing!</p>
 <% end %>
 <% @blogs.each do |blog| %>
 	<h1><a href="/blogs/<%= blog.id%>"><%= blog.headline %></a></h1>
-	<h3><%= blog.author %></h3>
+	<h3><a href="/blogs/author/<%= blog.user_id%>"><%= blog.author %></a></h3>
 	<img src="<%= blog.img_url %>">
 	<p><%= blog.content %></p>
 <% end %>

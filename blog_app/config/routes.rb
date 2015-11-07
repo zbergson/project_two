@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
   resources :blogs
   root 'blogs#index'
-  
+  get '/blogs/author/:user_id', :to => 'blogs#author'
 
 #====================================user routes=======================================
 #                   Prefix Verb   URI Pattern                    Controller#Action
@@ -32,5 +32,6 @@ Rails.application.routes.draw do
 #           PATCH  /blogs/:id(.:format)           blogs#update
 #           PUT    /blogs/:id(.:format)           blogs#update
 #           DELETE /blogs/:id(.:format)           blogs#destroy
+# GET    /blogs/author/:user_id(.:format) blogs#author
 
 end

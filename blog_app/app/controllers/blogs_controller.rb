@@ -1,10 +1,10 @@
 class BlogsController < ApplicationController
 	skip_before_action :verify_authenticity_token
-	before_action :set_blogs, only: [:show, :edit, :update, :destroy]
+	
 	
 	def index
 
-		@blogs = Blog.all
+		@blogs = Blog.all.order("blogs.id desc")
 			
 	end
 
@@ -21,16 +21,26 @@ class BlogsController < ApplicationController
 
 	def show
 
-
-	end
-
-	def set_blogs
 		@blog = Blog.find(params[:id])
+
 	end
+
+	def author
+
+		@user_id = User.where(id: params[:user_id])
+		
+		
+		@blog = Blog.where user_id: params[:user_id]
+
+
+
+	end
+
+	private
 
 
 	def blog_params
-		params.permit(:content, :category, :user_id, :img_url, :headline, :author)
+		params.require(:blog).permit(:content, :category, :user_id, :img_url, :headline, :author)
 	end
 
 
