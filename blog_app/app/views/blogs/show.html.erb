@@ -1,5 +1,7 @@
+<% if user_signed_in? %>
 <% if current_user.id == @blog.user_id %>
 <a href="/blogs/<%=@blog.id%>/edit">Edit your story</a>
+<% end %>
 <% end %>
 
 
@@ -7,3 +9,4 @@
 <h3><%= @blog.author %></h3>
 <img src="<%= @blog.img_url %>">
 <p><%= @blog.content %></p>
+

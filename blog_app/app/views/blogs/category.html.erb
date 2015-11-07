@@ -1,0 +1,7 @@
+<% @blogs.each do |blog| %>
+
+	<h1><a href="/blogs/<%= blog.id%>"><%= blog.headline %></a></h1>
+	<h3><a href="/blogs/author/<%= blog.user_id%>"><%= blog.author %></a></h3>
+	<img src="<%= blog.img_url %>">
+	<p><%= blog.content %></p>
+<% end %>

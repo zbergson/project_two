@@ -40,14 +40,18 @@ class BlogsController < ApplicationController
 
 	def edit
 
-		
-
 	end
 
 	def update
 
 		@blog.update_attributes(blog_params)
 		redirect_to '/blogs'
+	end
+
+	def category
+		@blogs = Blog.where(category: params[:name])
+		# @categorys = @blogs.where(category: params[:category])
+		# binding.pry
 	end
 
 	private

@@ -3,7 +3,16 @@
 <a href="/users/edit">Edit your profile</a>
 <% else %>
 <p>Log in to start writing!</p>
-<% end %>
+<% end %><br>
+<a href="/blogs/category/Sports">Sports</a>
+<a href="/blogs/category/Science">Science</a>
+<a href="/blogs/category/Dogs">Dogs</a>
+<a href="/blogs/category/Cats">Cats</a>
+<a href="/blogs/category/General">General</a>
+<a href="/blogs/category/Entertainment">Entertainment</a>
+<a href="/blogs/category/Food">Food</a>
+<a href="/blogs/category/Personal">Personal</a>
+<a href="/blogs/category/Politics">Politics</a>
 <% @blogs.each do |blog| %>
 	<h1><a href="/blogs/<%= blog.id%>"><%= blog.headline %></a></h1>
 	<h3><a href="/blogs/author/<%= blog.user_id%>"><%= blog.author %></a></h3>
