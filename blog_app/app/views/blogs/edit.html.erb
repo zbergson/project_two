@@ -1,0 +1,28 @@
+<!--   <form action="/blogs/<%=@blog.id %>" method="patch">
+    <input type="hidden" name="user_id" value="<%= current_user.id %>">
+    <input type="hidden" name="author" value="<%= current_user.username %>">
+    <label>Headline</label>
+    <input type="text" name="headline"></br>
+    <label>Content</label>
+    <input type="text" name="content"></br>
+    <label>Image</label>
+    <input type="text" name="img_url"></br>
+    <label>Category</label>
+    <select name="category">
+    	<option value="Science">Science</option>
+    	<option value="Food">Food</option>
+    	<option value="General">General</option>
+    	<option value="Personal">Personal</option>
+    	<option value="Sports">Sports</option>
+    	<option value="Politics">Politics</option>
+    	<option value="Dogs">Dogs</option>
+    	<option value="Cats">Cats</option>
+    	<option value="Animals">Animals</option>
+    	<option value="Entertainment">Entertainment</option>
+    </select><br />
+    <input type="submit" value="Update blog post">
+  </form> -->
+
+  <%= render :partial => 'form' %>
+
+

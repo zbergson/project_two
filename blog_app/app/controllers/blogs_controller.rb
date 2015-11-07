@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
 	skip_before_action :verify_authenticity_token
+	before_action :set_blog, only: [:show, :edit, :update, :destroy]
 	
 	
 	def index
@@ -9,19 +10,22 @@ class BlogsController < ApplicationController
 	end
 
 	def new
-
-
+	
+	
 	end
 
 	def create 
 
-		@blog = Blog.create(blog_params)
+		post_params = params.permit(:content, :category, :user_id, :img_url, :headline, :author) 
+		
+		@blog = Blog.create(post_params)
 		redirect_to '/blogs'
+
 	end
 
 	def show
 
-		@blog = Blog.find(params[:id])
+		
 
 	end
 
@@ -36,13 +40,24 @@ class BlogsController < ApplicationController
 
 	def edit
 
+		
+
+	end
+
+	def update
+
+		@blog.update_attributes(blog_params)
+		redirect_to '/blogs'
 	end
 
 	private
 
+	def set_blog
+		@blog = Blog.find(params[:id])
+	end
 
 	def blog_params
-		params.permit(:content, :category, :user_id, :img_url, :headline, :author)
+		params.require(:blog).permit(:content, :category, :user_id, :img_url, :headline, :author) 
 	end
 
 
