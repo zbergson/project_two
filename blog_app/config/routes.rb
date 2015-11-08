@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'blogs#index'
   get '/blogs/author/:user_id', :to => 'blogs#author'
   get '/blogs/category/:name', :to => 'blogs#category'
+  resources :favorite_blogs, only: [:create, :destroy, :index]
+  get '/favorite_blogs/profile/:user_id', :to => 'favorite_blogs#list'
 
 #====================================user routes=======================================
 #                   Prefix Verb   URI Pattern                    Controller#Action
@@ -35,5 +37,12 @@ Rails.application.routes.draw do
 #           DELETE /blogs/:id(.:format)           blogs#destroy
 # 					GET    /blogs/author/:user_id(.:format) blogs#author
 # 					GET    /blogs/category/:category(.:format)  blogs#category
+
+#==================================favorite routes======================================
+# favorite_blogs POST   /favorite_blogs(.:format)        favorite_blogs#create
+# favorite_blog DELETE /favorite_blogs/:id(.:format)    favorite_blogs#destroy
+# GET    /favorite_blogs/profile/:user_id(.:format) favorite_blogs#list
+
+
 
 end

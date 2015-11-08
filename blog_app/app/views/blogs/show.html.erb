@@ -10,3 +10,9 @@
 <img src="<%= @blog.img_url %>">
 <p><%= @blog.content %></p>
 
+<% unless current_user.favorite_blogs.exists?(id: @blog.id) %>
+<%= link_to 'Add to favorites', favorite_blogs_path(blog_id: @blog), method: :post %>
+<%- else -%>
+<%= link_to 'Remove from favorites', favorite_blogs_path(@blog), method: :delete %>
+<% end %>
+

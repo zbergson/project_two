@@ -1,0 +1,7 @@
+<h1>FAVORITES</h1>
+
+<% @user_id.each do |blog| %>
+	<h1><a href="/blogs/<%= blog.id%>"><%= blog.headline %></a></h1>
+	<img src="<%= blog.img_url %>">
+	<p><%= blog.content %></p>
+<% end %>
