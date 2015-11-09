@@ -1,3 +1,5 @@
+  <article>
+    <h1>Jot your thoughts here ...</h1>
   <form action="/blogs" method="post">
     <input type="hidden" name="user_id" value="<%= current_user.id %>">
     <input type="hidden" name="author" value="<%= current_user.username %>">
@@ -22,3 +24,5 @@
     </select><br />
     <input type="submit" value="Create new blog post">
   </form>
+
+  </article>

@@ -9,48 +9,42 @@
 <body>
 <div class="row">
 
-  <div class="large-12">
+  <div class="large-12 columns">
     
       <div class="fixed">
       <nav class="top-bar" data-topbar role="navigation" data-options="is_hover: false">
         <ul class="title-area">
           <li class="name">
-            <h1 id="icon"><a href="/blogs">Roll</a></h1>
+            <h1 id="icon"><a href="/blogs">Roll ~</a></h1>
           </li>
         </ul>
-        <ul class="left">
-          <li class="has-form">
+        <section class="top-bar-section">
+        <ul class="right">
+            <div class="login">
             <% if user_signed_in? %>
-            <li id="white" class="button"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+            <li id="white" class="active"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
             <% else %>
-            <a href="/users/sign_in" class="button">Sign In</a>
+            <li class="active"><a href="/users/sign_in" class="button">Sign In</a></li>
             <% end %> 
-          </li>
+          </div>
       </ul>
+      </section>
       <section class="top-bar-section">
     <!-- Right Nav Section -->
-        <ul class="right">
+        <ul class="left">
           <% if user_signed_in? %>
             <li class="active"><a href="blogs/author/<%=current_user.id %>">Profile</a></li>
+            <li class="divider"></li>
+            <li class="active"><a href="/favorite_blogs/profile/<%= current_user.id%>">Favorites</a></li>
+            <li class="divider"></li>
+            <li class="active"><a href="/blogs/new">Write a story</a></li>
+            <li class="divider"></li>
+            <li class="active"><a href="/users/edit">Edit your profile</a></li>
           <% end %>
-          <li class="has-dropdown">
-            <a href="#">Search By Category</a>
-            <ul class="dropdown">
-              <li><a href="blogs/category/Sports">Sports</a></li>
-              <li><a href="/blogs/category/Science">Science</a></li>
-              <li><a href="/blogs/category/Dogs">Dogs</a></li>
-              <li><a href="/blogs/category/Cats">Cats</a></li>
-              <li><a href="/blogs/category/General">General</a></li>
-              <li><a href="/blogs/category/Entertainment">Entertainment</a></li>
-              <li><a href="/blogs/category/Food">Food</a></li>
-              <li><a href="/blogs/category/Personal">Personal</a></li>
-              <li><a href="/blogs/category/Politics">Politics</a></li>
-            </ul>
-          </li>
-        </ul>
-      </section>
+        </section>
       </nav>
     </div>
+   
 
     <!-- <a href="/blogs">Home</a> -->
     <% if notice %>
@@ -62,19 +56,8 @@
 
     <% if user_signed_in? %>
     <p><%=current_user.username %> is logged in </p>
-    <p><a href="blogs/author/<%=current_user.id %>">Profile</a></p>
     <% end %>
 
-
-    <% if user_signed_in? %>
-      <li>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-      </li>
-    <% else %>
-      <li>
-      <%= link_to('Login', new_user_session_path)  %>  
-      </li>
-    <% end %>
 
     <%= yield %>
   </div>

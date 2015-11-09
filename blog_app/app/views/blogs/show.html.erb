@@ -1,18 +1,22 @@
+
+
+<article>
+<h1><%= @blog.headline %></h1>
+<h3>By: <a href="/blogs/author/<%= @blog.user_id%>"><%= @blog.author %></a></h3>
 <% if user_signed_in? %>
 <% if current_user.id == @blog.user_id %>
 <a href="/blogs/<%=@blog.id%>/edit">Edit your story</a>
 <% end %>
 <% end %>
-
-
-<h1><%= @blog.headline %></h1>
-<h3><%= @blog.author %></h3>
-<img src="<%= @blog.img_url %>">
+<p><img src="<%= @blog.img_url %>"></p>
 <p><%= @blog.content %></p>
+</article>
 
+<% if user_signed_in? %>
 <% unless current_user.favorite_blogs.exists?(id: @blog.id) %>
 <%= link_to 'Add to favorites', favorite_blogs_path(blog_id: @blog), method: :post %>
 <%- else -%>
 <%= link_to 'Remove from favorites', favorite_blogs_path(@blog), method: :delete %>
+<% end %>
 <% end %>
 
